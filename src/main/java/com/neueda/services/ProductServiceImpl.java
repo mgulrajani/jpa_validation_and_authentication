@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.neueda.dto.ProductRequest;
 import com.neueda.entities.Product;
 import com.neueda.repos.ProductRepository;
 @Service
@@ -27,7 +28,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product addProduct(Product product) {
+    public Product addProduct(ProductRequest request) {
+
+        Product product = new Product();
+        product.setName(request.getName());
+        product.setPrice(request.getPrice());
+        
         return productRepository.save(product); 
     }
 

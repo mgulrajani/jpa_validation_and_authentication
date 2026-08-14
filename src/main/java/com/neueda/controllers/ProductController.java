@@ -6,8 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.neueda.dto.ProductRequest;
 import com.neueda.entities.Product;
 import com.neueda.services.ProductService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -30,8 +34,8 @@ public class ProductController {
     }
   //want to add a new product
     @PostMapping 
-    public Product addProduct(@RequestBody Product product) {
-        return productService.addProduct(product);
+    public Product addProduct(@Valid @RequestBody ProductRequest request) {
+        return productService.addProduct(request);
     }   
 
 
