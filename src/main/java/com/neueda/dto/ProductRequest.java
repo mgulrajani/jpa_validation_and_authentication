@@ -1,7 +1,7 @@
 package com.neueda.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Min;
-
+/* 
 public class ProductRequest {
 
     @NotBlank(message = "Name is mandatory")
@@ -30,4 +30,15 @@ public class ProductRequest {
 
 
     
-}
+}*/
+
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Min;
+
+public record ProductRequest(
+    @NotBlank(message = "Name is required") String name,
+    @Min(value = 1, message = "Price must be greater than 0") Double price
+) {}
+
+
